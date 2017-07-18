@@ -28,6 +28,20 @@ var albumPicasso = {
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+ var albumMeg = {
+     title: 'Daisy',
+     artist: 'Flowerbomb',
+     label: 'MC',
+     year: '1922',
+     albumArtUrl: 'assets/images/album_covers/20.png',
+     songs: [
+         { title: 'FlowerBand?', duration: '1:01' },
+         { title: 'Stemmed', duration: '5:01' },
+         { title: 'Chlorophyll my heart', duration: '3:21'},
+         { title: 'Dreams', duration: '3:14' },
+         { title: 'Fruit', duration: '2:15'}
+     ]
+ };
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -64,4 +78,13 @@ var albumPicasso = {
 
   window.onload = function() {
       setCurrentAlbum(albumPicasso);
+      var albums = [albumPicasso,albumMarconi, albumCher];
+      var index = 1;
+      albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(album[index]);
+        index++;
+        if (index== albums.length){
+          index = 0;
+        }
+      }
   };
