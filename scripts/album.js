@@ -62,7 +62,12 @@ var albumPicasso = {
       }
   };
   var findParentByClassName = function(element, targetClass) {
-    if (element) {
+    if (element.parentElement===null) {
+      console.log("No parent found");
+    } else if (targetClass.parentElement===null){
+      console.log("No parent found with that class name");
+    }else if (element) {
+
         var currentParent = element.parentElement;
         while (currentParent.className !== targetClass && currentParent.className !== null) {
             currentParent = currentParent.parentElement;
@@ -112,7 +117,7 @@ var clickHandler = function(targetElement) {
       songListContainer.addEventListener('mouseover', function(event) {
          // #1
          if (event.target.parentElement.className === 'album-view-song-item') {
-           
+
 +            var songItem = getSongItem(event.target);
 +
 +            if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
